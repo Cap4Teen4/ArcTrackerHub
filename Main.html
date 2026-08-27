@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fan-made local progression tracker for ARC Raiders — Workshop, Scrappy, Blueprints, Quests, Enemies & more.">
+    <title>ARC Tracker Hub (Local Edition)</title>
+
+    <!-- Fredoka (body) + Fredoka One (hero titles) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/Style.css"/>
+    <link rel="stylesheet" href="assets/override.css">
+    <link rel="stylesheet" href="assets/playercounter.css">
+</head>
+<body>
+    
+<div class="arc-trails">
+
+<svg
+    viewBox="0 0 1600 1250"
+    preserveAspectRatio="none"
+    aria-hidden="true">
+
+    <!-- BLUE -->
+
+    <path
+        id="trailBlue"
+        class="arc-path blue"
+        d="
+            M 105 -120
+            L 105 355
+            C 105 425,
+              125 485,
+              190 525
+            C 285 585,
+              430 615,
+              590 650
+            C 770 690,
+              955 705,
+              1130 710
+            C 1260 715,
+              1380 715,
+              1500 715
+        "
+    />
+
+    <!-- GREEN -->
+
+    <path
+        id="trailGreen"
+        class="arc-path green"
+        d="
+            M 75 -120
+            L 75 475
+            C 75 550,
+              95 615,
+              165 670
+            C 265 745,
+              420 785,
+              590 825
+            C 780 870,
+              980 895,
+              1170 905
+            C 1320 915,
+              1430 920,
+              1545 920
+        "
+    />
+
+    <!-- YELLOW -->
+
+    <path
+        id="trailYellow"
+        class="arc-path yellow"
+        d="
+            M 45 -120
+            L 45 575
+            C 45 655,
+              60 720,
+              135 785
+            C 230 870,
+              370 920,
+              525 960
+            C 690 1005,
+              835 1040,
+              1010 1060
+            C 1170 1080,
+              1320 1085,
+              1460 1085
+        "
+    />
+
+    <!-- RED -->
+
+    <path
+        id="trailRed"
+        class="arc-path red"
+        d="
+            M 15 -120
+            L 15 675
+            C 15 760,
+              25 825,
+              85 890
+            C 160 970,
+              275 1020,
+              400 1060
+            C 535 1105,
+              650 1135,
+              800 1160
+            C 950 1185,
+              1080 1195,
+              1200 1195
+        "
+    />
+
+</svg>
+
+</div>
+
+<main class="container">
+
+
+        <h1 class="hero2-title">
+            <span class="MainTitle">ARC RAIDERS</span> TRACKER HUB
+        </h1>
+        <p class="hero2-description">
+            Track your Workshop, Scrappy, Blueprints, Quests, Enemies and Containers —
+            all saved locally, no account needed.
+        </p>
+    <p class="intro-note">
+        <strong>💡 Note 1:</strong> This is a <strong>"Fan Made Project."</strong><br>
+        <strong>💡 Note 2:</strong> This is a <strong>Possible Ongoing Project...</strong><br>
+        <strong>💡 Note 3:</strong> Ment for Casual Players<br><br>
+        <strong>🌾 Farm Reminder:</strong> Fabric, Metal, Plastic, Chemicals, Rubber<br>
+        <strong>🎯 Priority:</strong> Gunsmith Lv.2 → Scrappy Lv.2 → Refiner Lv.2<br>
+        <strong>💡 Tip:</strong> Night missions = +30% blueprint drop rate
+    </p>
+
+    <div class="global-progress">
+        <strong>📊 Overall Tasks Comleted</strong>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="globalProgressBar"></div>
+            <span class="global-progress-text" id="globalProgressText">0%</span>
+        </div>
+        <div style="margin-top: 10px; font-size: 0.9em; color: #aaa;">
+            <strong>Total:</strong><br>
+            <strong><span id="completedTasks">0</span> / <span id="totalTasks">0</span></strong>
+        </div>
+    </div>
+
+    <nav class="tab-nav" aria-label="Tracker sections">
+        <button class="tab-button active" data-tab="workshop">🔧 Workshop</button>
+        <button class="tab-button" data-tab="scrappy">🐔 Scrappy</button>
+        <button class="tab-button" data-tab="blueprints">📜 Blueprints</button>
+        <button class="tab-button" data-tab="quests">📋 Quests</button>
+        <button class="tab-button" data-tab="enemies">👾 Enemies</button>
+        <button class="tab-button" data-tab="containers">📦 Containers</button>
+        <button class="tab-button" data-tab="playercount">📊 Player Count</button>
+    </nav>
+
+    <div id="workshop" class="tab-content active"></div>
+    <div id="scrappy" class="tab-content"></div>
+    <div id="blueprints" class="tab-content"></div>
+    <div id="quests" class="tab-content"></div>
+    <div id="enemies" class="tab-content"></div>
+    <div id="containers" class="tab-content"></div>
+    <div id="playercount" class="tab-content">
+
+    <div class="container">
+
+        <!-- ============================
+             HEADER
+        ============================ -->
+        <div class="header">
+            <div class="title-area">
+                <h1>📊 Player Count</h1>
+                <p>Live Steam player tracking · auto-refresh every minute</p>
+            </div>
+
+            <div class="status" id="status">
+                <span class="status-dot"></span>
+                <span class="status-text" id="statusText">Waiting…</span>
+            </div>
+        </div>
+
+        <!-- ============================
+             CONTROLS
+        ============================ -->
+        <div class="controls">
+            <button onclick="fetchPlayerData()">🔄 Refresh</button>
+            <button onclick="clearHistory()">🗑 Clear History</button>
+        </div>
+
+        <!-- ============================
+             STATS
+        ============================ -->
+        <div class="stats">
+            <div class="card current">
+                <div class="card-label">Current Players</div>
+                <div class="card-value" id="currentPlayers">—</div>
+                <div class="card-sub" id="currentTime">Updated —</div>
+            </div>
+
+            <div class="card peak24">
+                <div class="card-label">24h Peak</div>
+                <div class="card-value" id="peak24">—</div>
+            </div>
+
+            <div class="card peak7">
+                <div class="card-label">7 Day Peak</div>
+                <div class="card-value" id="peak7">—</div>
+            </div>
+
+            <div class="card avg30">
+                <div class="card-label">30 Day Avg</div>
+                <div class="card-value" id="avg30">—</div>
+            </div>
+        </div>
+
+        <!-- ============================
+             GRAPH
+        ============================ -->
+        <div class="graph-card">
+            <div class="graph-header">
+                <span class="graph-title">Player History</span>
+                <span class="graph-info" id="graphInfo">No readings yet</span>
+            </div>
+
+            <canvas id="playerGraph"></canvas>
+        </div>
+
+        <!-- ============================
+             INFO
+        ============================ -->
+        <div class="info">
+            <div class="info-card">
+                <div class="info-label">API Timestamp</div>
+                <div class="info-value" id="apiTime">—</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">Stored Readings</div>
+                <div class="info-value" id="readingCount">0</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">Storage Key</div>
+                <div class="info-value">arc_raiders_player_history</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <div class="button-group">
+        <button id="exportButton" class="button secondary">📤 Export</button>
+        <button id="importButton" class="button tertiary">📥 Import</button>
+        <button id="resetAllButton" class="button">🗑️ Reset</button>
+    </div>
+    <p class="cta3-description">💾 Don't forget to export your progress before switching devices!</p>
+    <section class="cta-section" id="cta">
+    <h2 class="cta-title">
+        <span class="title-word2">Want</span>
+        <span class="title-word2">To</span>
+        <span class="title-word2">Join</span>
+        <span class="title-word2">Development?</span>
+    </h2>
+
+    <p class="cta3-description">
+        This tracker is Fan Project..<br> suggest features, or help track new content.<br> Add <strong>Oreo5285</strong> to get involved.
+    </p>
+
+    <div class="cta-buttons">
+        <a href="Made With Love By OREO" class="button secondary" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server">
+            💬 Join Discord
+        </a>
+        
+        <a href="#top" class="button tertiary" aria-label="Back to top of tracker">
+            🔼 Back to Top
+        </a>
+    </div>
+    
+</section>
+
+</main>
+
+<div id="exportModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeExportModal">&times;</span>
+        <h3>📤 Export</h3>
+        <textarea id="exportData" readonly></textarea>
+        <button class="button secondary" onclick="copyExportData()">📋 Copy</button>
+    </div>
+</div>
+
+<div id="importModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeImportModal">&times;</span>
+        <h3>📥 Import</h3>
+        <textarea id="importData"></textarea>
+        <button class="button tertiary" onclick="importProgressData()">✅ Import</button>
+    </div>
+</div>
+
+<script src="assets/Data-Info.js"></script>
+<script src="assets/Arc-Lines.js"></script>
+<script src="assets/playercount.js"></script>
+</body>
+</html>
