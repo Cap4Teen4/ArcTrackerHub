@@ -12,11 +12,23 @@
     <link rel="stylesheet" href="assets/Style.css"/>
     <link rel="stylesheet" href="assets/override.css">
     <link rel="stylesheet" href="assets/playercounter.css">
+    <link rel="stylesheet" href="assets/scroll-atmosphere.css">
+    <link rel="stylesheet" href="assets/live-count-badge.css">
 </head>
 <body>
-    
-<div class="arc-trails">
+<div class="progress" id="progress"></div>
 
+<nav class="nav">
+  <div class="logo">ARC RAIDERS<span> <strong>- TRACKER HUB</span></strong></div>
+  <div class="scroll-value">SCROLL <span id="scrollPercent">0%</span></div>
+  <div class="live-count-badge" id="liveCountBadge">
+  <span class="dot"></span>
+  <span class="label">Active Raiders:</span>
+  <span class="value" id="liveCountValue">—</span>
+</div>
+</nav>
+
+<div class="arc-trails">
 <svg
     viewBox="0 0 1600 1250"
     preserveAspectRatio="none"
@@ -308,5 +320,7 @@
 <script src="assets/Data-Info.js"></script>
 <script src="assets/Arc-Lines.js"></script>
 <script src="assets/playercount.js"></script>
+<script src="assets/scroll-atmosphere.js"></script>
+<script src="assets/live-count-badge.js"></script>
 </body>
 </html>
