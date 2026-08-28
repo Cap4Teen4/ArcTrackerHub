@@ -478,7 +478,7 @@
         }
 
         .workshop-bench:hover {
-            border-color: rgba(255,255,255,0.15);
+            border-color: var(--text-primary);
         }
 
         .workshop-bench-header {
@@ -551,7 +551,6 @@
             overflow: hidden;
             background: var(--bg-tertiary);
         }
-
         .workshop-level:last-child {
             margin-bottom: 0;
         }
@@ -676,4 +675,3 @@
             margin-right: auto;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
