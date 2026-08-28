@@ -1,0 +1,679 @@
+/* =========================================================
+   ARC RAIDERS - LOOT TABLE
+   Tracker Hub Integration
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap");
+
+
+/* =========================================================
+   LOOT APP
+========================================================= */
+
+.loot-app {
+
+    --loot-bg: #080909;
+    --loot-panel: #111313;
+    --loot-panel2: #171919;
+    --loot-border: #292d2d;
+
+    --loot-text: #eee;
+    --loot-muted: #777;
+
+    --loot-orange: #ff7300;
+
+    width: 100%;
+    max-width: 1500px;
+
+    margin: 0 auto;
+    padding: 28px;
+
+    color: var(--loot-text);
+
+    font-family: "Barlow", sans-serif;
+
+    box-sizing: border-box;
+}
+
+.loot-app *,
+.loot-app *::before,
+.loot-app *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.loot-topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+.loot-eyebrow {
+
+    color: var(--loot-orange);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.loot-topbar h1 {
+
+    margin: 3px 0 0;
+
+    font-size: 34px;
+    line-height: 1;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADER STATS
+========================================================= */
+
+.loot-stats {
+
+    display: flex;
+    gap: 10px;
+}
+
+.loot-stat {
+
+    min-width: 100px;
+
+    padding: 10px 14px;
+
+    background: var(--loot-panel);
+
+    border: 1px solid var(--loot-border);
+
+    border-radius: 6px;
+}
+
+.loot-stat span {
+
+    display: block;
+
+    color: var(--loot-muted);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.loot-stat strong {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.loot-controls {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+.loot-search {
+
+    display: flex;
+
+    align-items: center;
+
+    flex: 1;
+
+    min-width: 180px;
+    height: 42px;
+
+    background: var(--loot-panel);
+
+    border: 1px solid var(--loot-border);
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.loot-search span {
+
+    padding-left: 13px;
+
+    color: var(--loot-muted);
+
+    font-size: 22px;
+}
+
+.loot-search input {
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0 12px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--loot-text);
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.loot-search input::placeholder {
+    color: #666;
+}
+
+.loot-controls select {
+
+    height: 42px;
+
+    padding: 0 35px 0 12px;
+
+    color: var(--loot-text);
+
+    background: var(--loot-panel);
+
+    border: 1px solid var(--loot-border);
+
+    border-radius: 5px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.loot-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, 124px);
+
+    gap: 8px;
+
+    justify-content: start;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   CODEPEN STYLE ITEM CARD
+========================================================= */
+
+.loot-card {
+
+    --rarity-color: #00a8f2;
+
+    --info-bar-height: 30px;
+
+    --border-width: 2px;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 124px;
+    height: 124px;
+
+    flex: 0 0 124px;
+
+    background-image:
+
+        linear-gradient(
+            35deg,
+            color-mix(
+                in srgb,
+                var(--rarity-color) 42.5%,
+                transparent
+            ) 0,
+            #0e101c 100%
+        );
+
+    border-radius: .75rem;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        transform .12s ease,
+        filter .12s ease,
+        box-shadow .12s ease;
+}
+
+
+/* =========================================================
+   RARITIES
+========================================================= */
+
+.loot-card[data-rarity="common"] {
+    --rarity-color: #a8b0b7;
+}
+
+.loot-card[data-rarity="uncommon"] {
+    --rarity-color: #62d174;
+}
+
+.loot-card[data-rarity="rare"] {
+    --rarity-color: #00a8f2;
+}
+
+.loot-card[data-rarity="epic"] {
+    --rarity-color: #a66cff;
+}
+
+.loot-card[data-rarity="legendary"] {
+    --rarity-color: #f1a33b;
+}
+
+
+/* =========================================================
+   CARD BORDER
+========================================================= */
+
+.loot-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    padding: 2px;
+
+    background:
+
+        linear-gradient(
+            to top right,
+            var(--rarity-color) 35%,
+            #565f72
+        );
+
+    -webkit-mask:
+
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask:
+
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    mask-composite: exclude;
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   IMAGE AREA
+========================================================= */
+
+.loot-card__image {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: .25rem;
+}
+
+.loot-card__image > img {
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: auto;
+
+    pointer-events: none;
+
+    transition:
+        transform .1s ease-out;
+}
+
+.loot-card:hover
+.loot-card__image > img {
+
+    transform: scale(1.1);
+}
+
+
+/* =========================================================
+   PRICE BAR
+========================================================= */
+
+.loot-card__info {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    height: var(--info-bar-height);
+
+    margin:
+        0
+        var(--border-width)
+        var(--border-width);
+
+    padding:
+        0 .45rem;
+
+    border-radius:
+        0 0 .65rem .65rem;
+
+    background-color: #090c19;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.loot-card__price {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    white-space: nowrap;
+
+    color: #f1f3f5;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.loot-card__price::before {
+
+    content: "◆";
+
+    color: #d6a84d;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   SELECTED
+========================================================= */
+
+.loot-card.selected {
+
+    filter: brightness(1.12);
+
+    box-shadow:
+
+        0 0 0 2px var(--rarity-color),
+
+        0 8px 25px rgba(0,0,0,.4),
+
+        0 0 20px
+        color-mix(
+            in srgb,
+            var(--rarity-color) 25%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.loot-card:hover {
+
+    filter: brightness(1.08);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+
+        0 8px 25px rgba(0,0,0,.35),
+
+        0 0 18px
+        color-mix(
+            in srgb,
+            var(--rarity-color) 12%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.loot-card.revealing
+.loot-card__image img {
+
+    filter: blur(18px);
+
+    transform:
+        scale(1.08);
+}
+
+.loot-card.revealed
+.loot-card__image img {
+
+    filter: blur(0);
+
+    transform:
+        scale(1);
+}
+
+
+/* =========================================================
+   SHINE
+========================================================= */
+
+.loot-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: -30%;
+    left: -80%;
+
+    width: 45%;
+    height: 160%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.75),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 30;
+}
+
+.loot-card.revealing::after {
+
+    animation:
+        lootCardShine
+        2s ease forwards;
+}
+
+@keyframes lootCardShine {
+
+    0% {
+        left: -80%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    70% {
+        opacity: .55;
+    }
+
+    100% {
+        left: 140%;
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.loot-empty {
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    color: var(--loot-muted);
+}
+
+.loot-empty div {
+
+    color: #aaa;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.loot-empty small {
+
+    display: block;
+
+    margin-top: 6px;
+}
+
+.loot-empty.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .loot-app {
+        padding: 16px;
+    }
+
+    .loot-topbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .loot-stats {
+        width: 100%;
+    }
+
+    .loot-stat {
+        flex: 1;
+    }
+
+    .loot-controls {
+
+        flex-wrap: wrap;
+    }
+
+    .loot-search {
+
+        flex-basis: 100%;
+    }
+
+    .loot-controls select {
+
+        flex: 1;
+
+        min-width: 0;
+    }
+
+    .loot-grid {
+
+        grid-template-columns:
+            repeat(
+                auto-fill,
+                124px
+            );
+    }
+}

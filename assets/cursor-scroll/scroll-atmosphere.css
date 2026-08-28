@@ -1,0 +1,93 @@
+/* =========================================================
+   SCROLL ATMOSPHERE — top bar / title / scroll % / bg color
+   Drop this file in assets/ and link it in <head>
+========================================================= */
+
+:root {
+    --r: 10;
+    --g: 12;
+    --b: 18;
+    --accent: #ff6a00;
+    --baseaccent: #00fff2;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: rgb(var(--r), var(--g), var(--b));
+    transition: background-color 1s cubic-bezier(.22,1,.36,1);
+}
+
+/* ---------------------------------------------------------
+   PROGRESS BAR (top edge)
+--------------------------------------------------------- */
+
+.progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+    z-index: 2000;
+    transition: background .5s ease;
+}
+
+/* ---------------------------------------------------------
+   NAV BAR
+--------------------------------------------------------- */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.45), transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,.025);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--baseaccent);
+    transition: color .5s ease;
+}
+
+.logo span {
+    color: var(--accent);
+    font-weight: 400;
+}
+
+
+.scroll-value {
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+#scrollPercent {
+    color: var(--accent);
+    transition: color .5s ease;
+}
+
+/* push page content below the fixed nav */
+main.container {
+    padding-top: 70px;
+}
+
+@media (max-width: 700px) {
+    .nav { padding: 0 20px; }
+    .scroll-value { display: none; }
+}

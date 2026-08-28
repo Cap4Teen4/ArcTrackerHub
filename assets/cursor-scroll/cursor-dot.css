@@ -1,0 +1,169 @@
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: #333;
+
+    --text-primary: #e0e0e0;
+
+    --accent-orange: #ff7300;
+    --accent-blue: #0099ff;
+    --accent-green: #00ff6a;
+    --accent-red: #ff1900;
+    --accent-purple: #b700ff;
+    --accent-yellow: #ffcc00;
+
+    --btn-bgcolor-hover: #FFDD00;
+    --btn-color-hover: #000000;
+
+    /* Cursor */
+    --cursor-dot: var(--orange);
+    --cursor-color: var(--accent-blue);
+
+    /* Animated ring */
+    --ring-width: 1.5px;
+    --outer-offset: 4px;
+}
+
+
+body {
+    cursor: none;
+}
+
+
+/* =========================================
+   GREEN CENTER DOT
+========================================= */
+
+#cursor-dot {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        var(--cursor-dot);
+
+    box-shadow:
+        0 0 6px var(--cursor-dot),
+        0 0 12px var(--cursor-dot);
+
+    mix-blend-mode: screen;
+}
+
+
+/* =========================================
+   COLOR-CHANGING RING
+========================================= */
+
+#cursor-ring {
+    position: fixed;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9998;
+
+    border:
+        var(--ring-width)
+        solid
+        var(--cursor-color);
+
+    box-shadow:
+        0 0 8px color-mix(
+            in srgb,
+            var(--cursor-color) 45%,
+            transparent
+        );
+
+    transform:
+        translate(-50%, -50%);
+
+    transition:
+        width 0.3s ease,
+        height 0.3s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* =========================================
+   CLICK RIPPLE
+========================================= */
+
+.click-ripple {
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9997;
+
+    border:
+        2px solid
+        var(--cursor-color);
+
+    box-shadow:
+        0 0 10px color-mix(
+            in srgb,
+            var(--cursor-color) 50%,
+            transparent
+        );
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    animation:
+        rippleOut 0.85s ease-out forwards;
+}
+
+
+@keyframes rippleOut {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 0.9;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   TOUCH DEVICES
+========================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    body {
+        cursor: auto;
+    }
+
+    #cursor-dot,
+    #cursor-ring {
+        display: none;
+    }
+}
