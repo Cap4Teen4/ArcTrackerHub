@@ -11,11 +11,15 @@
 
     <link rel="stylesheet" href="assets/Style.css"/>
     <link rel="stylesheet" href="assets/override.css">
-    <link rel="stylesheet" href="assets/playercounter.css">
-    <link rel="stylesheet" href="assets/scroll-atmosphere.css">
-    <link rel="stylesheet" href="assets/live-count-badge.css">
+    <link rel="stylesheet" href="assets/playercount/playercounter.css">
+    <link rel="stylesheet" href="assets/cursor-scroll/scroll-atmosphere.css">
+    <link rel="stylesheet" href="assets/livecounter/live-count-badge.css">
+    <link rel="stylesheet" href="assets/cursor-scroll/cursor-dot.css">
+    <link rel="stylesheet" href="assets/lootvalue/lootvalue.css">
 </head>
 <body>
+    <div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 <div class="progress" id="progress"></div>
 
 <nav class="nav">
@@ -168,6 +172,7 @@
         <button class="tab-button" data-tab="quests">📋 Quests</button>
         <button class="tab-button" data-tab="enemies">👾 Enemies</button>
         <button class="tab-button" data-tab="containers">📦 Containers</button>
+        <button class="tab-button" data-tab="loot">💰 Loot Value</button>
         <button class="tab-button" data-tab="playercount">📊 Player Count</button>
     </nav>
 
@@ -177,6 +182,133 @@
     <div id="quests" class="tab-content"></div>
     <div id="enemies" class="tab-content"></div>
     <div id="containers" class="tab-content"></div>
+    <div id="loot" class="tab-content">
+
+        <div class="loot-app">
+
+            <header class="loot-topbar">
+
+                <div>
+                    <div class="loot-eyebrow">Top Side</div>
+                    <h1>Loot Values</h1>
+                </div>
+
+                <div class="loot-stats">
+
+                    <div class="loot-stat">
+                        <span>ITEMS</span>
+                        <strong id="itemCount">0</strong>
+                    </div>
+
+                    <div class="loot-stat">
+                        <span>SELECTED</span>
+                        <strong id="selectedCount">0</strong>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="loot-controls">
+
+                <div class="loot-search">
+                    <span>⌕</span>
+
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="Search items..."
+                        autocomplete="off"
+                    >
+                </div>
+
+
+                <select id="categoryFilter">
+                    <option value="all">
+                        All Categories
+                    </option>
+                </select>
+
+
+                <select id="rarityFilter">
+
+                    <option value="all">
+                        All Rarities
+                    </option>
+
+                    <option value="common">
+                        Common
+                    </option>
+
+                    <option value="uncommon">
+                        Uncommon
+                    </option>
+
+                    <option value="rare">
+                        Rare
+                    </option>
+
+                    <option value="epic">
+                        Epic
+                    </option>
+
+                    <option value="legendary">
+                        Legendary
+                    </option>
+
+                </select>
+
+
+                <select id="sortSelect">
+
+                    <option value="name">
+                        Name
+                    </option>
+
+                    <option value="rarity">
+                        Rarity
+                    </option>
+
+                    <option value="value">
+                        Value
+                    </option>
+
+                    <option value="category">
+                        Category
+                    </option>
+
+                </select>
+
+            </section>
+
+
+            <main>
+
+                <div
+                    id="lootGrid"
+                    class="loot-grid">
+                </div>
+
+
+                <div
+                    id="emptyState"
+                    class="loot-empty hidden">
+
+                    <div>NO ITEMS FOUND</div>
+
+                    <small>
+                        Try changing your search or filters.
+                    </small>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
     <div id="playercount" class="tab-content">
 
     <div class="container">
@@ -286,7 +418,7 @@
     </p>
 
     <div class="cta-buttons">
-        <a href="github.com/Cap4Teen4/ArcTrackerHub/pulls" class="button secondary" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server">
+        <a href="Made With Love By OREO" class="button secondary" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server">
             💬 Join Discord
         </a>
         
@@ -318,9 +450,12 @@
 </div>
 
 <script src="assets/Data-Info.js"></script>
-<script src="assets/Arc-Lines.js"></script>
-<script src="assets/playercount.js"></script>
-<script src="assets/scroll-atmosphere.js"></script>
-<script src="assets/live-count-badge.js"></script>
+<script src="assets/cursor-scroll/Arc-Lines.js"></script>
+<script src="assets/playercount/playercount.js"></script>
+<script src="assets/cursor-scroll/scroll-atmosphere.js"></script>
+<script src="assets/livecounter/live-count-badge.js"></script>
+<script src="assets/cursor-scroll/cursor-dot.js"></script>
+<script src="assets/livecounter/live-count-badge.js"></script>
+<script src="assets/lootvalue/lootvalue.js"></script>
 </body>
 </html>
