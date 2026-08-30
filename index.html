@@ -6,6 +6,9 @@
     <meta name="description" content="Fan-made local progression tracker for ARC Raiders — Workshop, Scrappy, Blueprints, Quests, Enemies & more.">
     <title>ARC Tracker Hub (Local Edition)</title>
 
+    <link rel="preconnect" href="https://arcraiders.wiki" crossorigin>
+    <link rel="dns-prefetch" href="https://arcraiders.wiki">
+
     <!-- Fredoka (body) + Fredoka One (hero titles) -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
 
@@ -16,6 +19,7 @@
     <link rel="stylesheet" href="assets/livecounter/live-count-badge.css">
     <link rel="stylesheet" href="assets/cursor-scroll/cursor-dot.css">
     <link rel="stylesheet" href="assets/lootvalue/lootvalue.css">
+    <link rel="stylesheet" href="assets/eventtimers/eventtimers.css">
 </head>
 <body>
     <div id="cursor-dot"></div>
@@ -173,6 +177,7 @@
         <button class="tab-button" data-tab="enemies">👾 Enemies</button>
         <button class="tab-button" data-tab="containers">📦 Containers</button>
         <button class="tab-button" data-tab="loot">💰 Loot Value</button>
+        <button class="tab-button" data-tab="eventtimers">⏰ Event Timers</button>
         <button class="tab-button" data-tab="playercount">📊 Player Count</button>
     </nav>
 
@@ -309,8 +314,94 @@
 
     </div>
 
-    <div id="playercount" class="tab-content">
 
+<div id="eventtimers" class="tab-content">
+<div class="app">
+
+    <header class="header">
+        <div>
+            <div class="region-title">
+                <span class="globe">🌐</span> Region
+                <span class="new-badge">NEW</span>
+            </div>
+            <div class="region-buttons">
+                <button class="region-btn" data-region="NA" type="button">NA</button>
+                <button class="region-btn" data-region="EU" type="button">EU</button>
+                <button class="region-btn" data-region="SA" type="button">SA</button>
+                <button class="region-btn" data-region="ASIA" type="button">ASIA</button>
+                <button class="region-btn" data-region="OCE" type="button">OCE</button>
+            </div>
+        </div>
+
+        <div class="time-area">
+            <div class="timezone">
+                Timezone: <span id="timezoneName">--</span>
+            </div>
+            <div class="time-toggle">
+                <button class="time-btn" data-format="12" type="button">12h</button>
+                <button class="time-btn" data-format="24" type="button">24h</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="live-panel">
+
+        <div class="live-section">
+            <div class="live-heading active-heading">
+                <span class="status-dot green"></span> Active Now
+            </div>
+            <div class="mini-events" id="activeEvents"></div>
+        </div>
+
+        <div class="live-divider"></div>
+
+        <div class="live-section">
+            <div class="live-heading upcoming-heading">
+                <span class="status-dot blue"></span> Upcoming
+            </div>
+            <div class="mini-events" id="upcomingEvents"></div>
+        </div>
+
+    </div>
+
+    <section class="schedule-section">
+
+        <div class="schedule-header">
+            <div>
+                <div class="schedule-title">Event Schedule</div>
+                <div class="schedule-timezone" id="scheduleTimezone">
+                    Times shown in local <span id="localClock">--:--:--</span>
+                </div>
+            </div>
+
+            <div class="view-switcher">
+                <button class="view-btn" data-view="event" type="button"><span>📋</span> Event</button>
+                <button class="view-btn" data-view="map" type="button"><span>🗺️</span> Map</button>
+                <button class="view-btn" data-view="timeline" type="button"><span>📅</span> Timeline</button>
+            </div>
+        </div>
+
+        <div class="map-tabs" id="mapTabs"></div>
+
+        <div id="scheduleContent"></div>
+
+    </section>
+
+    <footer>
+        <div class="footer-left">
+            <strong id="footerRegion">Europe</strong>
+            <span class="footer-dot"></span>
+            <span id="lastUpdated">Updated just now</span>
+        </div>
+        <div class="footer-right">Local time-zone data · no external API</div>
+    </footer>
+
+</div>
+</div>
+
+
+
+    <div id="playercount" class="tab-content">
     <div class="container">
 
         <!-- ============================
@@ -407,9 +498,9 @@
 </div>
 
     <div class="button-group">
-        <button id="exportButton" class="button secondary">📤 Export</button>
-        <button id="importButton" class="button tertiary">📥 Import</button>
-        <button id="resetAllButton" class="button">🗑️ Reset</button>
+        <button id="exportButton" class="button secondary">📤 Export (Downloads Json File)</button>
+        <button id="importButton" class="button tertiary">📥 Import (Json Files)</button>
+        <button id="resetAllButton" class="button">🗑️ Reset (Wipe Progess)</button>
     </div>
     <p class="cta3-description">💾 Don't forget to export your progress before switching devices!</p>
     <section class="cta-section" id="cta">
@@ -450,6 +541,7 @@
 <script src="assets/Data-Info.js"></script>
 <script src="assets/cursor-scroll/Arc-Lines.js"></script>
 <script src="assets/playercount/playercount.js"></script>
+<script src="assets/eventtimers/eventtimers.js"></script>
 <script src="assets/cursor-scroll/scroll-atmosphere.js"></script>
 <script src="assets/livecounter/live-count-badge.js"></script>
 <script src="assets/cursor-scroll/cursor-dot.js"></script>
