@@ -327,7 +327,7 @@ fetchPlayerCount();
    AUTO REFRESH
 ========================================= */
 
-setInterval(fetchPlayerCount,60*1000);
+setInterval(fetchPlayerCount, 150 * 1000); // 2 minutes 30 seconds
 
 /* =========================================
    RESIZE
