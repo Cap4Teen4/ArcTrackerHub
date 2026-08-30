@@ -6,9 +6,6 @@
     <meta name="description" content="Fan-made local progression tracker for ARC Raiders — Workshop, Scrappy, Blueprints, Quests, Enemies & more.">
     <title>ARC Tracker Hub (Local Edition)</title>
 
-    <link rel="preconnect" href="https://arcraiders.wiki" crossorigin>
-    <link rel="dns-prefetch" href="https://arcraiders.wiki">
-
     <!-- Fredoka (body) + Fredoka One (hero titles) -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
 
@@ -175,10 +172,10 @@
         <button class="tab-button" data-tab="blueprints">📜 Blueprints</button>
         <button class="tab-button" data-tab="quests">📋 Quests</button>
         <button class="tab-button" data-tab="enemies">👾 Enemies</button>
-        <button class="tab-button" data-tab="containers">📦 Containers</button>
+        <span><button class="tab-button" data-tab="containers">📦 Containers</button>
         <button class="tab-button" data-tab="loot">💰 Loot Value</button>
         <button class="tab-button" data-tab="eventtimers">⏰ Event Timers</button>
-        <button class="tab-button" data-tab="playercount">📊 Player Count</button>
+        <button class="tab-button" data-tab="playercount">📊 Player Count</button></span>
     </nav>
 
     <div id="workshop" class="tab-content active"></div>
@@ -368,7 +365,7 @@
 
         <div class="schedule-header">
             <div>
-                <div class="schedule-title">Event Schedule</div>
+                <span class="new-badge">NEW</span><div class="schedule-title">⏰ Upcoming Events <br>📋 Schedule List:</div>
                 <div class="schedule-timezone" id="scheduleTimezone">
                     Times shown in local <span id="localClock">--:--:--</span>
                 </div>
