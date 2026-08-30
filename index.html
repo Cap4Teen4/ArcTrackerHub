@@ -397,7 +397,14 @@
     </div>
 
 </div>
-
+<div id="importModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeImportModal">&times;</span>
+        <h3>📥 Import</h3>
+        <textarea id="importData"></textarea>
+        <button class="button tertiary" onclick="importProgressData()">✅ Import</button>
+    </div>
+</div>
 
     <div class="button-group">
         <button id="exportButton" class="button secondary">📤 Export</button>
@@ -437,15 +444,6 @@
         <h3>📤 Export</h3>
         <textarea id="exportData" readonly></textarea>
         <button class="button secondary" onclick="copyExportData()">📋 Copy</button>
-    </div>
-</div>
-
-<div id="importModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeImportModal">&times;</span>
-        <h3>📥 Import</h3>
-        <textarea id="importData"></textarea>
-        <button class="button tertiary" onclick="importProgressData()">✅ Import</button>
     </div>
 </div>
 
