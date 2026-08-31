@@ -110,17 +110,14 @@ No server-side application is required for the core tracker.
 
 ---
 ## 🗺️ Roadmap
-
 Planned and potential improvements include:
 * [ ] Improved quest tracking
 * [ ] More enemy information
 * [ ] Container locations/information
 * [ ] Improved blueprint tracking
-
 * [ ] More player-count statistics
 * [ ] Historical player-count charts
 * [ ] UI improvements and animations
-
 FAR FUTURE
 * [ ] Better mobile support
 
