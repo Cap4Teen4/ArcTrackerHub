@@ -727,20 +727,20 @@ function eventIcon(name){
 
     const icons={
 
-        "Bird City":"●",
-        "Night Raid":"◐",
-        "Harvester":"◉",
-        "Matriarch":"◆",
-        "Beachcombing":"●",
-        "Close Scrutiny":"◉",
-        "Hurricane":"◌",
-        "Lush Blooms":"✦",
-        "Hidden Bunker":"◇",
-        "Locked Gate":"▣",
-        "Uncovered Caches":"◆",
-        "Prospecting Probes":"⌁",
-        "Husk Graveyard":"◈",
-        "Electromagnetic Storm":"⚡"
+        "Bird City":"🐦",
+        "Night Raid":"🌙",
+        "Harvester":"🎖️",
+        "Matriarch":"⚔️",
+        "Beachcombing":"⛱️",
+        "Close Scrutiny":"🧰",
+        "Hurricane":"🌪️",
+        "Lush Blooms":"🌿",
+        "Hidden Bunker":"🛖",
+        "Locked Gate":"🔐",
+        "Uncovered Caches":"📦",
+        "Prospecting Probes":"💈",
+        "Husk Graveyard":"🪦",
+        "Electromagnetic Storm":"⛈️"
 
     };
 
