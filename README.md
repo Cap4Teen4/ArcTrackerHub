@@ -1,4 +1,4 @@
-# ⚡ ARC Tracker Hub
+# ⚡ ARC Tracker Hub (OutDated)
 
 > **A community-built ARC Raiders tracker hub for progression, loot, quests, blueprints, enemies, workshop upgrades, and more.**
 **ARC Tracker Hub** is a lightweight, browser-based companion for **ARC Raiders** designed to keep useful game information and progression tracking in one place.
